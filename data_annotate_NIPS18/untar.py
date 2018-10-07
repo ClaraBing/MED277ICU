@@ -24,7 +24,10 @@ for date in dates:
       os.chdir(cam)
       os.system('tar -xzf output.tar.gz')
       os.chdir('home/station/ipCamDetection_v2/bin/output/cvpr/')
-      ts_file = glob('timestamp*')[0]
+      ts_files = glob('timestamp*')
+      if len(ts_files) != 1:
+        continue
+      ts_file = ts_files[0]
       timestamps = [line.strip().split(' ')[1] for line in open(ts_file, 'r')]
       frames = sorted(glob('d/*'))
       if len(timestamps) != len(frames):
