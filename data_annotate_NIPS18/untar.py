@@ -11,8 +11,10 @@ for date in dates:
   print('######')
   print(date)
   os.system('mkdir -p {}'.format(os.path.join(date, 'all')))
-  hours = glob(os.path.join(date, '*'))
+  hours = sorted(glob(os.path.join(date, '*')))
   for hour in hours:
+    if hour == 'all':
+      continue
     print(hour)
     hour_num = os.path.basename(hour)
     cams = glob(os.path.join(hour, '*'))
