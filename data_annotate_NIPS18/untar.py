@@ -13,7 +13,7 @@ for date in dates:
   os.system('mkdir -p {}'.format(os.path.join(date, 'all')))
   hours = sorted(glob(os.path.join(date, '*')))
   for hour in hours:
-    if hour == 'all':
+    if 'all' in hour:
       continue
     print(hour)
     hour_num = os.path.basename(hour)
