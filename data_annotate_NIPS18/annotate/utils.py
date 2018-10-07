@@ -72,7 +72,7 @@ def visualize(depth_image1, white):
 
 def makedir(directory):
   if not os.path.isdir(directory):
-    os.mkdir(directory)
+    os.makedirs(directory)
 
 def get_time_str(t):
   """ t is in milliseconds """
