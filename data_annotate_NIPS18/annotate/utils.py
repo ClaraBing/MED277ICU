@@ -238,7 +238,7 @@ def read_key(key, task_state, video_state):
       video_state.start = -1
 
   elif key == ord('a'):  # action
-    tmp = get_user_input('Enter the Action ID: ')-1
+    tmp = get_user_input('Enter the Action ID: ')
     if 0 <= tmp < task_state.num_actions:
       video_state.action_id = tmp
 
