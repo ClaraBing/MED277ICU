@@ -11,7 +11,9 @@ import pdb
 class TaskState:
   def __init__(self, actions, date, depth_data_dir):
     self.depth_data_dir = depth_data_dir
-    self.tasks = [sorted(glob(os.path.join(depth_data_dir, '*.jpg')))]
+    frames = sorted(glob(os.path.join(depth_data_dir, '*.jpg')))
+    step = 500
+    self.tasks = [frames[i:i+step] for i in range(0, len(frames), step)]
     self.num_tasks = len(self.tasks)
     print('Task states: #tasks =', self.num_tasks)
 
