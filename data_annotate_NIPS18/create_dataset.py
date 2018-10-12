@@ -15,7 +15,7 @@ pathlist = Path('data/''').glob('**/*.jpg')
 
 
 # Aggregate labels from all CSV files
-labels = {}
+labels_dict = {}
 result_folders = os.listdir(RESULT_ROOT)
 for folder in result_folders:
     if os.path.isdir(os.path.join(RESULT_ROOT, folder)):
@@ -25,14 +25,23 @@ for folder in result_folders:
             result_folder = os.path.join(RESULT_ROOT, folder, camera)
             result_csvs = os.listdir(result_folder)
             num_csvs = len(result_csvs)
-            labels[camera] = []
+            labels_dict[camera] = {} # dict frame index -> label because labels might not be in order within the file
             for i in range(num_csvs):
                 with open(os.path.join(result_folder, str(i) + '.csv'), 'r') as csvfile:
                     labelreader = csv.reader(csvfile, delimiter=',', quotechar='|')
                     for row in labelreader:
                         if len(row) == 3:
                             for j in range(int(row[0]), int(row[1]) + 1):
-                                labels[camera].append(int(row[2]))
+                                labels_dict[camera][j + 500 * i] = int(row[2])
+
+labels = {} # frame name to array
+for k, v in labels_dict.items():
+    labels[k] = []
+    for i in range(len(v.keys())):
+        print (i, i in v.keys())
+        if i not in v.keys():
+            print("Error in ", k)
+        labels[k].append(v[i])
 
 # Aggregate file names for all labeled data:
 frames = {}
