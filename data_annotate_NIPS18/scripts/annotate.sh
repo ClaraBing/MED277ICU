@@ -1,4 +1,6 @@
 #!/bin/bash
+echo $1
+
 python -m annotate.run $1 --date=18-01-01 --sensor=171 
 
 # python -m annotate.run $1   \
