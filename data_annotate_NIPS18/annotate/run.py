@@ -34,7 +34,7 @@ keymap = {
 
 def main(args):
   # assert int(args.depth_sensor) in SENSOR_PAIRS[args.thermal_sensor]
-  depth_data_dir = os.path.join(args.data_root_dir, args.date, 'all', '10.233.219.'+args.sensor)
+  depth_data_dir = os.path.join(args.data_root_dir, args.date, '10.233.219.'+args.sensor)
 
   directory = os.path.join("{}_{}".format(args.date, args.sensor))
   results_dir_root = os.path.join(args.result_root, "results{:d}_{:s}".format(TASK_SIZE, args.date))
@@ -51,7 +51,7 @@ def main(args):
     5: 'Moving in bed',
     6: 'Walking',
     7: 'Lying on bed',
-    8: 'Sittinng on bed',
+    8: 'Sitting on bed',
     9: 'Sitting in chair',
     10: 'Standing',
     11: 'Delete',
@@ -94,7 +94,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
   parser.add_argument('--date', type=str)
-  parser.add_argument('--data_root_dir', default='../raw/')
+  parser.add_argument('--data_root_dir', default='../raw')
   parser.add_argument('--result-root', default='../result')
   parser.add_argument('--sensor', default='237')
 

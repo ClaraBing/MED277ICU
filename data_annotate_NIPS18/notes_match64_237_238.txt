@@ -1,3 +1,0 @@
-task 35 (or 34 if 0-based): Clip 2 should be "Get out of bed"
-
-task 74 (or 73? forgot...): merge the 2 negs: [28, 28] vs [29, 64]
