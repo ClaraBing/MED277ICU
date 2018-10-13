@@ -7,8 +7,9 @@ import os
 import numpy as np
 import csv
 
-DATA_ROOT= 'data/'
 CSV_FILE = "videos_additional.csv"
+DATA_ROOT= '/data/icu'
+CSV_FILE = "videos.csv"
 RESULT_ROOT = "result"
 csv_columns = ['Video_name', 'Frame', 'Image_path', 'Label']
 pathlist = Path('data/''').glob('**/*.jpg')
