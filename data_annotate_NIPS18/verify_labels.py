@@ -6,6 +6,11 @@ import csv
 import math
 def verify(image_dir='data/', label_dir='result/', date='17-06-09', camera='176'):
 
+    # image_folder = os.path.join(image_dir, date, '10.233.219.' + camera)
+    # # print(image_folder)
+    # images = os.listdir(image_folder)
+    # images.sort()
+    # # print(images)
     result_folder = os.path.join(label_dir, 'results64_' + date, date + "_" + camera)
     print("[*] Verifying labels from ", result_folder)
     if not os.path.isdir(result_folder):
@@ -14,6 +19,9 @@ def verify(image_dir='data/', label_dir='result/', date='17-06-09', camera='176'
     result_csvs = os.listdir(result_folder)
     num_csvs = len(result_csvs)
 
+    # labels = [None for _ in range(len(images))]
+    # batch_size = 500
+    # num_iters = math.ceil(len(images) / batch_size)
     for i in range(num_csvs):
         is_CSV_malformed = False
         with open(os.path.join(result_folder, str(i) + '.csv'), 'r') as csvfile:
@@ -32,7 +40,8 @@ def verify(image_dir='data/', label_dir='result/', date='17-06-09', camera='176'
                             print("[*] Labeling error, image {} in task {} was already labeled with {} and is now labeled with {}".format(j, i, labels[j], row[2]))
     print("[*] Done.")
 if __name__ == '__main__':
-    dates = ['17-06-03', '17-06-04', '17-06-06', '17-06-09', '17-06-10', '17-06-14', '17-06-16', '17-06-17', '17-06-18', '17-06-19']
+    dates = ['17-06-05', '17-06-07', '17-06-12', '17-06-15']
+    # dates = ['17-06-04', '17-06-09', '17-06-10', '17-06-14', '17-06-16', '17-06-17']
     cameras = ['176', '157']
     for date in dates:
         for camera in cameras:

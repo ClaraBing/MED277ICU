@@ -79,7 +79,7 @@ def main(args):
     utils.print_info(task_state, video_state)
     depth_image = video_state.get_images()
 
-    image = depth_image # utils.visualize(depth_image, 255)# video_state.white_balance)
+    image = depth_image
 
     utils.draw_info(image, task_state, video_state)
 
