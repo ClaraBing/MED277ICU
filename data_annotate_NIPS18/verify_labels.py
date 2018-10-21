@@ -40,7 +40,8 @@ def verify(image_dir='data/', label_dir='result/', date='17-06-09', camera='176'
                             print("[*] Labeling error, image {} in task {} was already labeled with {} and is now labeled with {}".format(j, i, labels[j], row[2]))
     print("[*] Done.")
 if __name__ == '__main__':
-    dates = ['17-06-04', '17-06-09', '17-06-10', '17-06-14', '17-06-16', '17-06-17']
+    dates = ['17-06-05', '17-06-07', '17-06-12', '17-06-15']
+    # dates = ['17-06-04', '17-06-09', '17-06-10', '17-06-14', '17-06-16', '17-06-17']
     cameras = ['176', '157']
     for date in dates:
         for camera in cameras:
