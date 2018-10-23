@@ -7,7 +7,6 @@ from glob import glob
 import cv2
 import pickle
 import numpy as np
-from labels.utils import mkdir_if_missing
 
 import pdb
 
@@ -131,7 +130,7 @@ def main(args):
         for cam_folder in cam_folders:
             CAM = cam_folder.split('\\')[-1] if '\\' in cam_folder else cam_folder.split('/')[-1]
             OUT_DIR = os.path.join(CONFIG['ANNOT_DIR_BASE'], DATE, CAM)
-            mkdir_if_missing(OUT_DIR)
+            os.makedirs(OUT_DIR, exist_ok=True)
 
             print('Current date:', DATE)
             print('Current cam:', CAM)
