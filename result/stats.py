@@ -53,7 +53,7 @@ def count_file(fname, silent=False):
 
 def cls_by_day(remove_major=False, plot=True):
   dates = sorted(glob('17_*.csv'))
-  mtrx = np.zeros([len(cls_map)-len(ignored_keys), len(dates)])
+  mtrx = np.zeros([len(cls_map)-3, len(dates)])
 
   for did,date in enumerate(dates):
     curr = count_file(date, silent=True)
@@ -110,7 +110,7 @@ def select_dates_wrapper():
     val = sorted([i for i in range(n_days) if i not in train])
     mtrx_train = counts[:, train]
     mtrx_val = counts[:, val]
-    if mtrx_val.sum(1).min() > 0.1 and mtrx_val.sum(1).max()<0.6:
+    if mtrx_val.sum(1).min() > 0.2 and mtrx_val.sum(1).max()<0.6:
       print('train:', train)
       print([round(each*100, 2) for each in mtrx_train.sum(1)])
       print('val:', val)
