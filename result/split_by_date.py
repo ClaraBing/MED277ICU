@@ -2,7 +2,7 @@ import os
 
 date_map = {}
 
-with open('videos_additional.csv', 'r') as fin:
+with open('videos_2210.csv', 'r') as fin:
   data = [line for line in fin]
 
 header = data[0]
@@ -21,8 +21,8 @@ for date in date_map:
     print('File exists:', fname)
     continue
   with open(fname, 'w') as fout:
-    fout.write(header+'\n')
+    fout.write(header)
     for line in date_map[date]:
-      fout.write(line+'\n')
+      fout.write(line)
 
 
