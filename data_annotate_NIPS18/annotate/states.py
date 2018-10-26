@@ -4,14 +4,14 @@ import cv2
 import os
 from glob import glob
 import pickle
-from . import utils
+import utils
 import platform
 import pdb
 
 class TaskState:
   def __init__(self, actions, date, depth_data_dir):
     self.depth_data_dir = depth_data_dir
-    frames = sorted(glob(os.path.join(depth_data_dir, '*.jpg')))
+    frames = sorted(glob(os.path.join(depth_data_dir, '*.png')))
     step = 500
     self.tasks = [frames[i:i+step] for i in range(0, len(frames), step)]
     self.num_tasks = len(self.tasks)

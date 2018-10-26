@@ -12,8 +12,8 @@ if sys.stderr.encoding != 'UTF-8':
 
 
 from config import *
-from .states import *
-from . import utils
+from states import *
+import utils
 
 TASK_SIZE = 64
 
@@ -35,7 +35,7 @@ keymap = {
 def main(args):
   # assert int(args.depth_sensor) in SENSOR_PAIRS[args.thermal_sensor]
   depth_data_dir = os.path.join(args.data_root_dir, args.date, '10.233.219.'+args.sensor)
-
+  print(depth_data_dir)
   directory = os.path.join("{}_{}".format(args.date, args.sensor))
   results_dir_root = os.path.join(args.result_root, "results{:d}_{:s}".format(TASK_SIZE, args.date))
   utils.makedir(results_dir_root)
@@ -94,7 +94,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser()
 
   parser.add_argument('--date', type=str)
-  parser.add_argument('--data_root_dir', default='../raw')
+  parser.add_argument('--data_root_dir', default='../data')
   parser.add_argument('--result-root', default='../result')
   parser.add_argument('--sensor', default='237')
 
