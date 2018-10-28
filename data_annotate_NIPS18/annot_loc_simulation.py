@@ -113,6 +113,9 @@ def main(args):
     else:
         raise NotImplementedError("args.util could only be 'bboxes'. Got {:s}. o_O".format(args.util))
 
+    print os.getcwd()
+    print os.path.join(CONFIG['IMG_DIR_BASE'] , args.date)
+
     if args.date:
         date_folders = glob(os.path.join(CONFIG['IMG_DIR_BASE'] , args.date))
     else:
@@ -124,7 +127,7 @@ def main(args):
         print(date_folder)
         DATE = date_folder.split('\\')[-1] if '\\' in date_folder else date_folder.split('/')[-1]
         OUT_DIR = os.path.join(CONFIG['ANNOT_DIR_BASE'], DATE)
-        os.makedirs(OUT_DIR, exist_ok=True)
+        os.makedirs(OUT_DIR)
 
         print('Current date:', DATE)
         sys.stdout.flush()
