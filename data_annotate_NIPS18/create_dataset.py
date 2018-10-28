@@ -7,8 +7,8 @@ import os
 import numpy as np
 import csv
 
-CSV_FILE = "videos_2210.csv"
-DATA_ROOT= '/data/icu'
+CSV_FILE = "simulated_videos.csv"
+DATA_ROOT= 'data'
 RESULT_ROOT = "result"
 csv_columns = ['Video_name', 'Frame', 'Image_path', 'Label']
 pathlist = Path('data/''').glob('**/*.jpg')
@@ -16,14 +16,12 @@ pathlist = Path('data/''').glob('**/*.jpg')
 
 # Aggregate labels from all CSV files
 labels_dict = {}
-result_folders = os.listdir(RESULT_ROOT)
-# result_folders = [
-#    'results64_17-06-05',
-#    'results64_17-06-07',
-#    'results64_17-06-12',
-#    'results64_17-06-13',
-#    'results64_17-06-15'
-#]
+# result_folders = os.listdir(RESULT_ROOT)
+result_folders = [
+    'results64_18_04_14',
+    'results64_18_04_16',
+    'results64_18_04_18',
+]
 
 print(result_folders)
 
@@ -32,6 +30,7 @@ for folder in result_folders:
         print(folder)
         camera_folders = os.listdir(os.path.join(RESULT_ROOT, folder))
         for camera in camera_folders:
+            print(camera)
             result_folder = os.path.join(RESULT_ROOT, folder, camera)
             if 'DS_Store' in result_folder:
               continue
